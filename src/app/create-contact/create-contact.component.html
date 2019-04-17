@@ -1,0 +1,35 @@
+<form class="border m-auto col-6" name="contactForm" [formGroup]="contactForm" (ngSubmit)="contactForm.valid"
+  novalidate>
+  <fieldset>
+    <h4 class="border-bottom pt-4 pb-4">Add a New Contact</h4>
+    <div class="align-self-center" class="d-flex flex-column mt-4">
+      <div class="user-img align-self-center" [ngStyle]="{'background-image': 'url(' + url + ')'}">
+        <label for="upload">
+          <input type="file" id="upload" accept="image/*" (change)="onSelectFile($event)">
+        </label>
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="First Name" [(ngModel)]="firstName" [formControl]="firstNameFormControl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" [(ngModel)]="lastName" [formControl]="lastNameFormControl" required>
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field class="col-3">
+          <input matInput type="number" placeholder="code" [(ngModel)]="code" [formControl]="codeFormControl" required>
+        </mat-form-field>
+        <mat-form-field class="col-9">
+          <input matInput placeholder="Mobile Number" pattern="[0-9]+" [(ngModel)]="mobileNumber"
+            [formControl]="mobileNumberFormControl" required>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="email" [formControl]="emailFormControl">
+      </mat-form-field>
+      <button type="sumbit" (click)="addContact(contactForm.valid, contactForm.value)"
+        class="btn btn-success align-self-center mb-3 col-6">Add Contact</button>
+      <a routerLink="/" class="btn btn-primary align-self-center mb-3 col-6">Cancel</a>
+    </div>
+  </fieldset>
+</form>

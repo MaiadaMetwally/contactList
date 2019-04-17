@@ -1,0 +1,45 @@
+<div class="container p-2 border">
+  <div class="header row flex-column m-0 mb-0">
+    <div class="col search-container ">
+      <div class="form-group col m-0 p-0">
+        <input type="text" class="form-control text-center search-input" placeholder="&#61442; Search Contacts"
+          [(ngModel)]="searchTxt">
+      </div>
+    </div>
+    <div class="border-bottom align-items-center title d-flex  p-0">
+      <p class="col-10 m-0">Add New Contact</p><i (click)="addNewContact()" class="fas fa-plus col-2 pr-0 text-center cursor-pointer"></i>
+    </div>
+  </div>
+
+  <div class="scrollbar position-relative" id="scroll-style">
+      <div class="chars">
+          <a [href]="'#' + char" *ngFor="let char of chars">{{char}}</a>
+        </div>
+    <div class="latest-contact-list" *ngIf="!searchTxt">
+      <p class="latest row">Latest Contacts</p>
+      <div class="row border-bottom ml-1" *ngFor="let latestContact of latestContacts">
+        <img class="user-img mr-2" src="../../assets/img/user.png" alt="">
+        <div class="d-flex justify-content-center flex-column">
+          <p class="mb-0">{{latestContact.firstName}} {{latestContact.lastName}}</p>
+          <p class="mb-0">{{latestContact.mobileNumber}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-list">
+      <div *ngFor="let filterContact of filterContacts | filter: searchTxt; let i = index">
+        <p id="{{chars[i]}}" *ngIf="filterContact" class="latest row">{{chars[i]}}</p>
+        <div class="row border-bottom ml-1" *ngFor="let contact of filterContact">
+          <img class="user-img mr-2" src="../../assets/img/user.png" alt="">
+          <div class="d-flex justify-content-center flex-column">
+            <p class="mb-0">{{contact.firstName}} {{contact.lastName}}</p>
+            <p class="mb-0">{{contact.mobileNumber}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

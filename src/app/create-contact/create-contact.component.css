@@ -1,0 +1,23 @@
+form[name='contactForm'] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+div.user-img {
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+label {
+  height: 90px;
+  width: 90px;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
